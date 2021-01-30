@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- kindeditor 引入配置文件-->
+
+    <script th:src="@{/admin/plugins/kindeditor-4.1.10/kindeditor-all.js}"></script>
+    <script th:src="@{/admin/plugins/kindeditor-4.1.10/lang/zh_CN.js}"></script>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+       $(function (){
+           var editor;
+
+           //详情编辑器
+           editor = KindEditor.create('textarea[id="editor"]', {
+               items: ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+                   'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                   'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                   'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                   'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+                   'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'multiimage',
+                   'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                   'anchor', 'link', 'unlink'],
+               uploadJson: '/api/v1/pri/admin/upload/file',
+               filePostName: 'file'
+           });
+       });
+
+
+    </script>
+
+</head>
+<body>
+    <!--编辑框 DOM-->
+
+    <div class="form-group">
+        <label class="control-label">内容:</label>
+        <!--编辑器的长宽设置设置-->
+        <textarea class="form-control" id="editor" style="width:700px;height:450px;"></textarea>
+    </div>
+
+</body>
+</html>

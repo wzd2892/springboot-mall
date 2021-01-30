@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzd.newbeemall.mapper.AdminMapper">
+    <sql id="Base_Column_List">
+        admin_user_id, login_user_name, login_password, nick_name, locked
+    </sql>
+    <select id="login" resultType="AdminUser">
+        select
+        <include refid="Base_Column_List" />
+        from tb_newbee_mall_admin_user
+        where login_user_name = #{userName,jdbcType=VARCHAR} AND login_password=#{password,jdbcType=VARCHAR} AND locked = 0
+    </select>
+
+    <insert id="addAdminUser" useGeneratedKeys="true" keyColumn="admin_user_id" keyProperty="adminUserId">
+        insert into tb_newbee_mall_admin_user (login_user_name, login_password, nick_name, locked)
+        values (#{loginUserName,jdbcType=VARCHAR},#{loginPassword,jdbcType=VARCHAR},#{nickName,jdbcType=VARCHAR},
+                #{locked,jdbcType=INTEGER})
+    </insert>
+
+
+    <select id="getUserDetailById" resultType="AdminUser">
+        select
+        <include refid="Base_Column_List" />
+        from tb_newbee_mall_admin_user
+        where admin_user_id = #{login_user_id,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="AdminUser">
+        update tb_newbee_mall_admin_user
+        <set>
+            <if test="loginUserName != null">
+                login_user_name = #{loginUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="loginPassword != null">
+                login_password = #{loginPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null">
+                nick_name = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="locked != null">
+                locked = #{locked,jdbcType=TINYINT},
+            </if>
+        </set>
+        where admin_user_id = #{adminUserId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="AdminUser">
+        update tb_newbee_mall_admin_user
+        set login_user_name = #{loginUserName,jdbcType=VARCHAR},
+            login_password = #{loginPassword,jdbcType=VARCHAR},
+            nick_name = #{nickName,jdbcType=VARCHAR},
+            locked = #{locked,jdbcType=TINYINT}
+        where admin_user_id = #{adminUserId,jdbcType=INTEGER}
+    </update>
+
+</mapper>

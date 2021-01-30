@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="admin/header::header-fragment"></header>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- 引入页面头header-fragment -->
+    <div th:replace="admin/header::header-nav"></div>
+    <!-- 引入工具栏sidebar-fragment -->
+    <div th:replace="admin/sidebar::sidebar-fragment(${path})"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+        <div class="content">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">首页</h3>
+                </div> <!-- /.card-body -->
+                <div class="card-body">
+                    <div class="panel panel-default">
+                        <div style="padding: 10px 0 20px 10px;">
+                            <h3>
+                                欢迎来到后台管理系统， 您可以在此使用不同的功能来完成商场的后台管理
+                            </h3>
+                            <h5>
+                                <ul>
+                                    <li>商品信息：采用了富文本编辑器KindEditor, 可以很方便的进行商品信息的添加操作</li>
+                                    <li>轮播图配置：管理设置商场首页的轮播图，实现了图片上传功能，主要是实现增删改查的功能</li>
+                                    <li>热销商品、新品上线、为你推荐配置：实现对特定商品的提取单独制表，用于丰富商场主页界面</li>
+                                    <li>分类管理：主要是商品的分类的管理，参考流行电商，实现来商品的三级分类管理</li>
+                                    <li>商品管理：浏览所有的商品，修改商品的信息、更改商品上下架状态</li>
+                                    <li>会员管理、订单管理：开发中，谅解</li>
+                                    <li>感谢</li>
+                                </ul>
+                            </h5>
+
+                            <h3>联系作者</h3>
+                            <ul>
+
+                                <li>制作人：王政东</li>
+
+                            </ul>
+                            <ul>
+
+                                <li>我的邮箱：289226301@qq.com // conniewzd@163.com</li>
+
+                            </ul>
+                            <ul>
+                                <li><a href="https://github.com/wzd2892/springboot-mall" target="_blank">mall in GitHub</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- 引入页脚footer-fragment -->
+    <div th:replace="admin/footer::footer-fragment"></div>
+</div>
+<!-- jQuery -->
+<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script th:src="@{/admin/plugins/jQueryUI/jquery-ui.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/admin/dist/js/adminlte.min.js}"></script>
+</body>
+</html>

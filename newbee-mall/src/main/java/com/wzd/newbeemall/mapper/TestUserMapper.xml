@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzd.newbeemall.mapper.TestUserMapper">
+
+    <resultMap type="TestUser" id="AdminUserResult">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userName" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findUsers" parameterType="Map" resultMap="AdminUserResult">
+        select id,name,password from tb_user
+        order by id desc
+        <if test="start!=null and limit!=null">
+            limit #{start},#{limit}
+        </if>
+    </select>
+
+    <select id="getTotalUser" parameterType="Map" resultType="int">
+        select count(*) from tb_user
+    </select>
+
+</mapper>
